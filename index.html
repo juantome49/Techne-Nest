@@ -10,11 +10,11 @@
         :root {
             --primary-color: #008cff; /* Azul futurista */
             --secondary-color: #00d46f; /* Verde brillante */
-            --light-bg: #f5f5f5; /* Fondo claro */
-            --card-bg: rgba(255, 255, 255, 0.7); /* Fondo de tarjetas translúcido */
-            --text-dark: #333333;
-            --text-light: #555555;
-            --border-subtle: #ddd;
+            --light-bg: #f0f2f5; /* Fondo gris suave, casi blanco */
+            --card-bg: rgba(255, 255, 255, 0.5); /* Fondo de tarjetas más translúcido */
+            --text-dark: #2c3e50; /* Gris oscuro para el texto */
+            --text-light: #7f8c8d; /* Gris más claro para texto secundario */
+            --border-subtle: #dcdcdc;
         }
 
         body {
@@ -147,7 +147,7 @@
             margin: 0.8em auto 0;
         }
 
-        /* Services Section */
+        /* Sections */
         .services, .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -159,14 +159,14 @@
             backdrop-filter: blur(10px);
             padding: 2.5em;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .service-box:hover, .portfolio-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         .service-box h3, .portfolio-item h4 {
             font-size: 1.5em;
@@ -177,7 +177,7 @@
             color: var(--text-light);
         }
 
-        /* Portafolio */
+        /* Portfolio */
         #portafolio {
             text-align: center;
             padding: 5em 0;
@@ -222,7 +222,7 @@
             backdrop-filter: blur(10px);
             padding: 2.5em;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         .contact-form label {
             margin-top: 1em;
@@ -236,7 +236,7 @@
             padding: 1em;
             border: 1px solid var(--border-subtle);
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
             color: var(--text-dark);
             font-family: 'Montserrat', sans-serif;
             transition: border-color 0.3s ease;
@@ -488,7 +488,6 @@
             elementsToTranslate.forEach(element => {
                 const key = element.getAttribute('data-lang-key');
                 if (translations[lang][key]) {
-                    // Special case for footer to preserve the inner span
                     if (key === "footer-text") {
                         element.innerHTML = translations[lang][key];
                     } else {
