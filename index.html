@@ -3,90 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techne Nest - Diseño y Desarrollo Web</title>
+    <title>Techne Nest - Diseño y Desarrollo Web de Vanguardia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #00e676; /* Verde neón */
+            --secondary-color: #2979ff; /* Azul brillante */
+            --dark-bg: #1a1a2e; /* Fondo oscuro casi negro */
+            --light-bg: #22223b; /* Un poco más claro */
+            --text-color: #e0e0e0; /* Gris claro */
+            --accent-glow: rgba(0, 230, 118, 0.4); /* Brillo para el verde */
+            --box-shadow-glow: 0 0 15px rgba(0, 230, 118, 0.3);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 0.5em 0;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-        nav a:hover {
-            background-color: #575757;
-        }
+
+        /* Utility classes */
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
             padding: 2em 0;
         }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+            color: white;
+            padding: 1.5em 0;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 0; /* Ocultamos el tamaño de fuente para que la imagen domine */
+            line-height: 0; /* Aseguramos que no haya espacio extra */
+            transition: transform 0.3s ease-in-out;
+        }
+        header h1:hover {
+            transform: scale(1.03);
+        }
+        header .logo-img {
+            max-width: 250px; /* Ajusta el tamaño máximo del logo */
+            height: auto;
+            display: block; /* Para centrar la imagen */
+            margin: 0 auto; /* Centra la imagen */
+            filter: drop-shadow(0 0 10px var(--primary-color)) drop-shadow(0 0 20px var(--accent-glow)); /* Efecto de brillo sutil */
+        }
+        header p {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-top: 0.5em;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--light-bg);
+            padding: 0.8em 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        nav a {
+            color: var(--text-color);
+            padding: 14px 22px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+        nav a:hover {
+            color: var(--primary-color);
+            background-color: rgba(0, 230, 118, 0.1);
+            text-shadow: 0 0 8px var(--primary-color);
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out 0s;
+        }
+        nav a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 4em 0;
-            background: #fff;
-            margin-bottom: 2em;
+            padding: 6em 0;
+            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('https://acerkate.com/storage/2021/05/diseno-web-scaled.jpg') no-repeat center center/cover;
+            margin-bottom: 3em;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
+            animation: pulse-glow 15s infinite alternate;
+            z-index: 1;
+        }
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
         .hero h2 {
-            font-size: 2em;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            color: var(--primary-color);
             margin-bottom: 0.5em;
+            text-shadow: 0 0 15px var(--primary-color);
+            position: relative;
+            z-index: 2;
         }
         .hero p {
-            font-size: 1.2em;
-            color: #666;
+            font-size: 1.3em;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0.8em auto 0;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
         }
+
+        /* Services Section */
         .services {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin-bottom: 2em;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
+            margin-bottom: 3em;
         }
         .service-box {
-            background: #fff;
-            padding: 1.5em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 30%;
+            background: var(--light-bg);
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow-glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.1) 0%, rgba(41, 121, 255, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+        .service-box:hover::before {
+            opacity: 1;
+        }
+        .service-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 25px var(--accent-glow);
         }
         .service-box h3 {
-            color: #007BFF;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 0.6em;
+            position: relative;
+            z-index: 1;
         }
-        footer {
-            background-color: #333;
-            color: white;
+        .service-box p {
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Portafolio Section */
+        #portafolio {
             text-align: center;
-            padding: 1em 0;
+            margin-bottom: 3em;
+            padding: 2em 0;
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow-glow);
+        }
+        #portafolio h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary-color);
+            font-size: 2.5em;
+            text-shadow: 0 0 10px var(--secondary-color);
+            margin-bottom: 0.5em;
+        }
+        #portafolio p {
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5em;
             margin-top: 2em;
+        }
+        .portfolio-item {
+            background-color: var(--dark-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(41, 121, 255, 0.2);
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--secondary-color);
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--primary-color);
+        }
+        .portfolio-item h4 {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            margin: 1em 0.5em 0.5em;
+        }
+        .portfolio-item p {
+            color: var(--text-color);
+            font-size: 0.9em;
+            padding: 0 0.8em 1em;
+        }
+
+        /* Contact Section */
+        #contacto {
+            text-align: center;
+            padding: 3em 0;
+            background: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow-glow);
+            margin-bottom: 3em;
+        }
+        #contacto h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-color);
+            font-size: 2.5em;
+            text-shadow: 0 0 10px var(--primary-color);
+            margin-bottom: 0.5em;
+        }
+        #contacto p {
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-bottom: 1em;
+        }
+        #contacto a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            text-shadow: 0 0 5px rgba(41, 121, 255, 0.5);
+        }
+        #contacto a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 8px var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1.5em 0;
+            border-top: 1px solid var(--primary-color);
+            font-size: 0.9em;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.4);
+        }
+        footer p {
+            margin: 0;
+            color: rgba(224, 224, 224, 0.7);
+        }
+        footer span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .logo-img {
+                max-width: 180px; /* Ajusta el tamaño del logo en móviles */
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+            .hero h2 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .service-box, .portfolio-item {
+                width: 100%;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                padding: 10px 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Techne Nest</h1>
-        <p>Innovando en diseño y desarrollo web</p>
+        <h1>
+            <img src="https://generative-models.google.com/api/v1/mk-image/t52G4FkLg9z2zM2D-3T81nJbB1dYqJ5eJ3pB10T8_uE.png" alt="Logo de Techne Nest" class="logo-img">
+        </h1>
+        <p>Tu incubadora de ideas digitales en el futuro</p>
     </header>
 
     <nav>
@@ -98,40 +368,57 @@
 
     <div class="container">
         <section id="inicio" class="hero">
-            <h2>Creando experiencias digitales únicas</h2>
-            <p>Somos expertos en transformar ideas en sitios web funcionales y visualmente atractivos.</p>
+            <h2>Creando experiencias digitales del mañana, hoy.</h2>
+            <p>Fusionamos creatividad y tecnología de vanguardia para construir sitios web que no solo funcionan, sino que impresionan.</p>
         </section>
         
         <section id="servicios" class="services">
             <div class="service-box">
-                <h3>Diseño Web</h3>
-                <p>Diseños modernos y responsivos que se adaptan a cualquier dispositivo. </p>
+                <h3>Diseño Web Futurista</h3>
+                <p>Interfaces intuitivas y estéticas que anticipan las tendencias. Diseños limpios, responsivos y con un toque de innovación.</p>
             </div>
             <div class="service-box">
-                <h3>Desarrollo Web</h3>
-                <p>Soluciones a medida con tecnologías de vanguardia para garantizar el mejor rendimiento.</p>
+                <h3>Desarrollo Full-Stack</h3>
+                <p>Desde la base de datos hasta la interfaz de usuario, construimos soluciones robustas, escalables y optimizadas para el rendimiento del futuro.</p>
             </div>
             <div class="service-box">
-                <h3>Mantenimiento</h3>
-                <p>Soporte continuo para que tu sitio esté siempre actualizado y seguro.</p>
+                <h3>Consultoría Tecnológica</h3>
+                <p>Asesoramiento experto para navegar el panorama digital. Estrategias para mantener tu presencia online a la vanguardia.</p>
             </div>
         </section>
         
-        <section id="portafolio" style="text-align: center; margin-bottom: 2em;">
-            <h2>Nuestro Portafolio</h2>
-            <p>Echa un vistazo a algunos de nuestros proyectos recientes.</p>
-            </section>
+        <section id="portafolio">
+            <h2>Proyectos que definen el mañana</h2>
+            <p>Una mirada a nuestra trayectoria, donde la visión se encuentra con la ejecución.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plataforma E-commerce">
+                    <h4>Plataforma E-commerce Holográfica</h4>
+                    <p>Desarrollo de una tienda online con visuales 3D interactivos y una experiencia de usuario sin precedentes.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542831371-d00e791f1c2b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aplicación de Gestión">
+                    <h4>Aplicación de Gestión por Voz</h4>
+                    <p>Interfaz de usuario optimizada para comandos de voz, revolucionando la interacción con sistemas complejos.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1606220816047-e31f4967396c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Portal de Realidad Aumentada">
+                    <h4>Portal de Realidad Aumentada</h4>
+                    <p>Un espacio virtual inmersivo que permite a los usuarios interactuar con productos y servicios en un nuevo nivel.</p>
+                </div>
+            </div>
+        </section>
 
-        <section id="contacto" style="text-align: center;">
-            <h2>¡Hablemos de tu proyecto!</h2>
-            <p>Contacta con nosotros para empezar a construir tu presencia online.</p>
-            <p>Email: <a href="mailto:info@technenest.com">info@technenest.com</a></p>
-            <p>Teléfono: <a href="tel:+123456789">+123 456 789</a></p>
+        <section id="contacto">
+            <h2>¡Conéctate con el futuro!</h2>
+            <p>¿Listo para transformar tu visión en una realidad digital? Contáctanos.</p>
+            <p>Email: <a href="mailto:contacto@technenest.com">contacto@technenest.com</a></p>
+            <p>Teléfono: <a href="tel:+1234567890">+1 234 567 890</a></p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Techne Nest. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Techne Nest. Todos los derechos reservados. Diseñado con <span>&#9829;</span> por <span>Techne Nest</span>.</p>
     </footer>
 
 </body>
