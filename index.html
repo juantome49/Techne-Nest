@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techne Nest - Diseño y Desarrollo Web de Vanguardia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00e676; /* Verde neón */
+            --primary-color: #00e676; /* Verde neón (usado con moderación) */
             --secondary-color: #2979ff; /* Azul brillante */
-            --dark-bg: #1a1a2e; /* Fondo oscuro casi negro */
-            --light-bg: #22223b; /* Un poco más claro */
-            --text-color: #e0e0e0; /* Gris claro */
-            --accent-glow: rgba(0, 230, 118, 0.4); /* Brillo para el verde */
-            --box-shadow-glow: 0 0 15px rgba(0, 230, 118, 0.3);
+            --dark-bg: #111111; /* Fondo oscuro casi negro */
+            --mid-dark: #1a1a1a;
+            --light-bg: #222222;
+            --text-color: #e0e0e0;
+            --subtle-gray: #555;
+            --box-shadow-subtle: 0 5px 25px rgba(0, 0, 0, 0.5);
         }
 
         body {
@@ -24,8 +25,10 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="4" fill="%2300e676" opacity="0.8" /></svg>') 16 16, auto;
+            /* Cursor personalizado sutil */
         }
-
+        
         /* Utility classes */
         .container {
             width: 90%;
@@ -34,47 +37,37 @@
             overflow: hidden;
             padding: 2em 0;
         }
+        h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
 
-        /* Header */
+        /* Header & Navigation */
         header {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
-            color: white;
+            background-color: transparent;
             padding: 1.5em 0;
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             position: relative;
             z-index: 1000;
         }
-        header h1 {
-            margin: 0;
-            font-size: 0; /* Ocultamos el tamaño de fuente para que la imagen domine */
-            line-height: 0; /* Aseguramos que no haya espacio extra */
-            transition: transform 0.3s ease-in-out;
-        }
-        header h1:hover {
-            transform: scale(1.03);
-        }
         header .logo-img {
-            max-width: 250px; /* Ajusta el tamaño máximo del logo */
+            max-width: 200px; /* Tamaño más sutil */
             height: auto;
-            display: block; /* Para centrar la imagen */
-            margin: 0 auto; /* Centra la imagen */
-            filter: drop-shadow(0 0 10px var(--primary-color)) drop-shadow(0 0 20px var(--accent-glow)); /* Efecto de brillo sutil */
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 5px var(--primary-color));
+            transition: transform 0.4s ease, filter 0.4s ease;
         }
-        header p {
-            font-size: 1.1em;
-            color: var(--text-color);
-            margin-top: 0.5em;
+        header .logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px var(--primary-color));
         }
 
-        /* Navigation */
         nav {
-            background-color: var(--light-bg);
+            background-color: transparent;
             padding: 0.8em 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
-            border-bottom: 1px solid var(--secondary-color);
+            border-bottom: 1px solid var(--subtle-gray);
         }
         nav a {
             color: var(--text-color);
@@ -82,232 +75,161 @@
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
         }
         nav a:hover {
             color: var(--primary-color);
-            background-color: rgba(0, 230, 118, 0.1);
-            text-shadow: 0 0 8px var(--primary-color);
-        }
-        nav a::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            visibility: hidden;
-            transform: scaleX(0);
-            transition: all 0.3s ease-in-out 0s;
-        }
-        nav a:hover::before {
-            visibility: visible;
-            transform: scaleX(1);
         }
 
-        /* Hero Section */
+        /* Hero Section - Más dinámico y con parallax */
         .hero {
-            text-align: center;
-            padding: 6em 0;
-            background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('https://acerkate.com/storage/2021/05/diseno-web-scaled.jpg') no-repeat center center/cover;
-            margin-bottom: 3em;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)), url('https://acerkate.com/storage/2021/05/diseno-web-scaled.jpg') no-repeat center center/cover fixed;
+            /* 'fixed' para efecto parallax */
+            margin-bottom: 0;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
-            animation: pulse-glow 15s infinite alternate;
-            z-index: 1;
-        }
-        @keyframes pulse-glow {
-            0% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 0.5; }
-        }
-
-        .hero h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 0.5em;
-            text-shadow: 0 0 15px var(--primary-color);
-            position: relative;
+        .hero-content {
             z-index: 2;
+            padding: 2em;
+        }
+        .hero h2 {
+            font-size: 4em;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.2em;
+            animation: fadeInTop 1.5s ease-out;
         }
         .hero p {
-            font-size: 1.3em;
+            font-size: 1.5em;
             color: var(--text-color);
             max-width: 800px;
             margin: 0.8em auto 0;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            position: relative;
-            z-index: 2;
+            animation: fadeInBottom 1.5s ease-out;
+        }
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInBottom {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Services Section */
+        /* Services Section - Tarjetas que flotan */
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2em;
-            margin-bottom: 3em;
+            padding: 5em 0;
         }
         .service-box {
-            background: var(--light-bg);
-            padding: 2em;
-            border-radius: 12px;
-            box-shadow: var(--box-shadow-glow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--mid-dark);
+            padding: 2.5em;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow-subtle);
             text-align: center;
-            border: 1px solid rgba(0, 230, 118, 0.2);
+            border: 1px solid var(--subtle-gray);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-        .service-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 230, 118, 0.1) 0%, rgba(41, 121, 255, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 0;
-        }
-        .service-box:hover::before {
-            opacity: 1;
-        }
         .service-box:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 0 25px var(--accent-glow);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
         }
         .service-box h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-color);
-            font-size: 1.8em;
+            font-size: 1.5em;
             margin-bottom: 0.6em;
-            position: relative;
-            z-index: 1;
+            color: var(--text-color);
         }
         .service-box p {
-            color: var(--text-color);
-            position: relative;
-            z-index: 1;
+            color: #ccc;
         }
 
-        /* Portafolio Section */
+        /* Portafolio - Grid con efectos de revelación */
         #portafolio {
+            padding: 5em 0;
             text-align: center;
-            margin-bottom: 3em;
-            padding: 2em 0;
-            background: var(--light-bg);
-            border-radius: 12px;
-            box-shadow: var(--box-shadow-glow);
         }
         #portafolio h2 {
-            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            margin-bottom: 1em;
             color: var(--secondary-color);
-            font-size: 2.5em;
-            text-shadow: 0 0 10px var(--secondary-color);
-            margin-bottom: 0.5em;
-        }
-        #portafolio p {
-            font-size: 1.1em;
-            color: var(--text-color);
         }
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5em;
-            margin-top: 2em;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2em;
         }
         .portfolio-item {
-            background-color: var(--dark-bg);
-            border-radius: 8px;
+            background-color: var(--mid-dark);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(41, 121, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+            position: relative;
         }
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--secondary-color);
+            transform: scale(1.05);
         }
         .portfolio-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             display: block;
-            border-bottom: 1px solid var(--primary-color);
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
         }
-        .portfolio-item h4 {
-            color: var(--primary-color);
-            font-size: 1.3em;
-            margin: 1em 0.5em 0.5em;
+        .portfolio-item:hover img {
+            filter: grayscale(0%);
         }
-        .portfolio-item p {
-            color: var(--text-color);
-            font-size: 0.9em;
-            padding: 0 0.8em 1em;
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1em;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
         }
 
         /* Contact Section */
         #contacto {
             text-align: center;
-            padding: 3em 0;
-            background: var(--light-bg);
-            border-radius: 12px;
-            box-shadow: var(--box-shadow-glow);
-            margin-bottom: 3em;
+            padding: 5em 0;
         }
         #contacto h2 {
-            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
             color: var(--primary-color);
-            font-size: 2.5em;
-            text-shadow: 0 0 10px var(--primary-color);
-            margin-bottom: 0.5em;
-        }
-        #contacto p {
-            font-size: 1.1em;
-            color: var(--text-color);
-            margin-bottom: 1em;
         }
         #contacto a {
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
-            text-shadow: 0 0 5px rgba(41, 121, 255, 0.5);
         }
         #contacto a:hover {
             color: var(--primary-color);
-            text-shadow: 0 0 8px var(--primary-color);
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark-bg);
+            background-color: var(--mid-dark);
             color: var(--text-color);
             text-align: center;
             padding: 1.5em 0;
-            border-top: 1px solid var(--primary-color);
             font-size: 0.9em;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.4);
-        }
-        footer p {
-            margin: 0;
-            color: rgba(224, 224, 224, 0.7);
         }
         footer span {
             color: var(--primary-color);
@@ -316,37 +238,11 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header .logo-img {
-                max-width: 180px; /* Ajusta el tamaño del logo en móviles */
-            }
-            header h1 {
-                font-size: 2.5em;
-            }
-            .hero h2 {
-                font-size: 2em;
-            }
-            .hero p {
-                font-size: 1em;
-            }
-            .service-box, .portfolio-item {
-                width: 100%;
-            }
-            nav {
-                flex-direction: column;
-            }
-            nav a {
-                padding: 10px 15px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            nav a:last-child {
-                border-bottom: none;
-            }
-            .services {
-                grid-template-columns: 1fr;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
+            header .logo-img { max-width: 150px; }
+            .hero h2 { font-size: 2.5em; }
+            .hero p { font-size: 1.1em; }
+            .services { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -356,7 +252,6 @@
         <h1>
             <img src="https://generative-models.google.com/api/v1/mk-image/t52G4FkLg9z2zM2D-3T81nJbB1dYqJ5eJ3pB10T8_uE.png" alt="Logo de Techne Nest" class="logo-img">
         </h1>
-        <p>Tu incubadora de ideas digitales en el futuro</p>
     </header>
 
     <nav>
@@ -366,24 +261,26 @@
         <a href="#contacto">Contacto</a>
     </nav>
 
-    <div class="container">
-        <section id="inicio" class="hero">
+    <section id="inicio" class="hero">
+        <div class="hero-content">
             <h2>Creando experiencias digitales del mañana, hoy.</h2>
-            <p>Fusionamos creatividad y tecnología de vanguardia para construir sitios web que no solo funcionan, sino que impresionan.</p>
-        </section>
-        
+            <p>Fusionamos creatividad y tecnología para construir sitios web que no solo funcionan, sino que te sumergen en una nueva realidad.</p>
+        </div>
+    </section>
+    
+    <div class="container">
         <section id="servicios" class="services">
             <div class="service-box">
-                <h3>Diseño Web Futurista</h3>
-                <p>Interfaces intuitivas y estéticas que anticipan las tendencias. Diseños limpios, responsivos y con un toque de innovación.</p>
+                <h3>Diseño Web de Élite</h3>
+                <p>Interfaces que se sienten, no solo se ven. Nuestro diseño intuitivo guía a los usuarios de manera fluida a través de experiencias digitales memorables.</p>
             </div>
             <div class="service-box">
-                <h3>Desarrollo Full-Stack</h3>
-                <p>Desde la base de datos hasta la interfaz de usuario, construimos soluciones robustas, escalables y optimizadas para el rendimiento del futuro.</p>
+                <h3>Desarrollo Hiperconectado</h3>
+                <p>Construimos plataformas robustas y escalables que se anticipan a las necesidades del mañana, con rendimiento optimizado y seguridad inexpugnable.</p>
             </div>
             <div class="service-box">
-                <h3>Consultoría Tecnológica</h3>
-                <p>Asesoramiento experto para navegar el panorama digital. Estrategias para mantener tu presencia online a la vanguardia.</p>
+                <h3>Consultoría de Vanguardia</h3>
+                <p>Analizamos el ecosistema digital para trazar una estrategia única que te posicione un paso por delante de la competencia. No es solo un sitio web, es una visión.</p>
             </div>
         </section>
         
@@ -393,32 +290,38 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plataforma E-commerce">
-                    <h4>Plataforma E-commerce Holográfica</h4>
-                    <p>Desarrollo de una tienda online con visuales 3D interactivos y una experiencia de usuario sin precedentes.</p>
+                    <div class="portfolio-overlay">
+                        <h4>Plataforma E-commerce Holográfica</h4>
+                        <p>Una experiencia de compra que se siente como el futuro.</p>
+                    </div>
                 </div>
                 <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1542831371-d00e791f1c2b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aplicación de Gestión">
-                    <h4>Aplicación de Gestión por Voz</h4>
-                    <p>Interfaz de usuario optimizada para comandos de voz, revolucionando la interacción con sistemas complejos.</p>
+                    <div class="portfolio-overlay">
+                        <h4>Aplicación de Gestión por Voz</h4>
+                        <p>Controla tus sistemas con la simplicidad de una conversación.</p>
+                    </div>
                 </div>
                 <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1606220816047-e31f4967396c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Portal de Realidad Aumentada">
-                    <h4>Portal de Realidad Aumentada</h4>
-                    <p>Un espacio virtual inmersivo que permite a los usuarios interactuar con productos y servicios en un nuevo nivel.</p>
+                    <div class="portfolio-overlay">
+                        <h4>Portal de Realidad Aumentada</h4>
+                        <p>Interactúa con productos en un espacio virtual inmersivo.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contacto">
             <h2>¡Conéctate con el futuro!</h2>
-            <p>¿Listo para transformar tu visión en una realidad digital? Contáctanos.</p>
+            <p>¿Listo para construir algo que redefine lo posible? Contáctanos.</p>
             <p>Email: <a href="mailto:contacto@technenest.com">contacto@technenest.com</a></p>
             <p>Teléfono: <a href="tel:+1234567890">+1 234 567 890</a></p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Techne Nest. Todos los derechos reservados. Diseñado con <span>&#9829;</span> por <span>Techne Nest</span>.</p>
+        <p>&copy; 2025 Techne Nest. Todos los derechos reservados. Diseñado por <span>Techne Nest</span>.</p>
     </footer>
 
 </body>
