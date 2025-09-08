@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techne Nest - Diseño y Desarrollo Web de Vanguardia</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary-color: #00e676; /* Verde neón (usado con moderación) */
@@ -226,6 +227,93 @@
             color: var(--primary-color);
         }
 
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 2em auto;
+            background-color: var(--mid-dark);
+            padding: 2.5em;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow-subtle);
+        }
+
+        .contact-form label {
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1em;
+            border: 1px solid var(--subtle-gray);
+            border-radius: 5px;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            border: none;
+            padding: 1em 2em;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 2em;
+        }
+
+        .cta-button:hover {
+            background-color: #00b34d;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Instagram Button */
+        .floating-instagram {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-instagram:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .floating-instagram i {
+            font-size: 1.8em;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-instagram:hover i {
+            transform: rotate(5deg);
+        }
+
         /* Footer */
         footer {
             background-color: var(--mid-dark);
@@ -318,14 +406,28 @@
         <section id="contacto">
             <h2>Hablemos de tu proyecto.</h2>
             <p>Contáctanos para empezar a trabajar juntos.</p>
-            <p>Email: <a href="mailto:contacto@technenest.com">contacto@technenest.com</a></p>
-            <p>Teléfono: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            <form action="procesar_formulario.php" method="post" class="contact-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit" class="cta-button">Enviar Mensaje</button>
+            </form>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2025 Techne Nest. Todos los derechos reservados. Diseñado por <span>Techne Nest</span>.</p>
     </footer>
+
+    <a href="https://ig.me/m/USERNAME_DE_INSTAGRAM?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20sus%20servicios%20de%20diseño%20web." target="_blank" class="floating-instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
 
 </body>
 </html>
